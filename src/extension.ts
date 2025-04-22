@@ -81,6 +81,32 @@ function executeCommand(command: string): Promise<void> {
 	});
 }
 
+// 检查 xed 命令是否可用
+async function isXedAvailable(): Promise<boolean> {
+    return new Promise((resolve) => {
+        exec('which xed', (error) => {
+            resolve(!error);
+        });
+    });
+}
+
+// 提示安装 Xcode 命令行工具
+async function promptInstallXcodeCLI(): Promise<void> {
+    const install = await vscode.window.showErrorMessage(
+        'Xcode 命令行工具未安装，是否现在安装？',
+        '安装',
+        '取消'
+    );
+    
+    if (install === '安装') {
+        exec('xcode-select --install', (error) => {
+            if (error) {
+                vscode.window.showErrorMessage('启动 Xcode 命令行工具安装失败，请手动安装');
+            }
+        });
+    }
+}
+
 async function openInIDE(uri: vscode.Uri | undefined, isProject: boolean, ideType: 'webstorm' | 'androidstudio' | 'xcode'): Promise<void> {
 	try {
 		let filePath: string;
@@ -146,6 +172,12 @@ async function openInIDE(uri: vscode.Uri | undefined, isProject: boolean, ideTyp
 		let command: string;
 		if (os.platform() === 'darwin') {
 			if (ideType === 'xcode') {
+				// 检查 xed 命令是否可用
+				const xedAvailable = await isXedAvailable();
+				if (!xedAvailable) {
+					await promptInstallXcodeCLI();
+					return;
+				}
 				// 使用 xed 命令打开文件并跳转到指定行
 				command = `xed --line ${line} "${filePath}"`;
 			} else {

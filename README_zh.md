@@ -1,124 +1,123 @@
-# Switch2IDEA
+# Switch2Idea
 
-[English](README.md)
-
-> 💡 推荐在 IDEA 中配合 [Switch2Cursor](https://github.com/qczone/switch2cursor) 使用
-
-[![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/qczone.switch2idea?label=VS%20Marketplace&style=for-the-badge&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=qczone.switch2idea)
-[![Downloads](https://img.shields.io/visual-studio-marketplace/d/qczone.switch2idea?style=for-the-badge&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=qczone.switch2idea)
+[![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/baoxin.switch2idea?label=VS%20Marketplace&style=for-the-badge&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=baoxin.switch2idea)
+[![Downloads](https://img.shields.io/visual-studio-marketplace/d/baoxin.switch2idea?style=for-the-badge&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=baoxin.switch2idea)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
-## 🔍 项目简介
+一个快速在 VSCode 和 JetBrains IDE（IntelliJ IDEA、WebStorm、Android Studio）之间切换的 VSCode 插件。
 
-一个提升开发效率的 Cursor 扩展，让你在 Cursor 和 IDEA 之间实现丝滑切换
+![Switch2Idea 演示](images/switch-show.gif)
 
-![Switch2IDEA演示](images/switch-show.gif)
+## ✨ 功能特点
 
-## 🌟 功能特性
+- 🚀 快速在 VSCode 和 JetBrains IDE 之间切换
+- 📂 支持打开当前文件到 JetBrains IDE 的相同位置
+- 📁 支持打开当前项目到 JetBrains IDE
+- 🛠️ 支持多个 JetBrains IDE：
+  - IntelliJ IDEA
+  - WebStorm
+  - Android Studio
+- ⌨️ 支持快捷键操作
+- 📝 支持右键菜单操作
+- 🌐 支持跨平台（Windows、macOS、Linux）
 
-- 🚀 无缝编辑器切换
+## 📦 安装
 
-  - 在 Cursor 和 IDEA 之间一键切换
-  - 自动定位到相同的光标位置（行号和列号）
-  - 完美保持编辑上下文，不中断思路
-- ⌨️ 便捷的快捷键支持
+1. 打开 VSCode
+2. 按下 `Ctrl+Shift+X`（Windows/Linux）或 `Cmd+Shift+X`（macOS）打开扩展视图
+3. 搜索 "Switch2Idea"
+4. 点击安装
 
-  - macOS:
-    - `Option+Shift+P` - 在 IDEA 中打开整个项目
-    - `Option+Shift+O` - 在 IDEA 中打开当前文件
-  - Windows:
-    - `Alt+Shift+P` - 在 IDEA 中打开整个项目
-    - `Alt+Shift+O` - 在 IDEA 中打开当前文件
-- 🔧 多样化的访问方式
+或者从 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=baoxin.switch2idea) 安装
 
-  - 快捷键操作
-  - 编辑器右键菜单
-  - 文件浏览器右键菜单
+## ⚙️ 配置
 
-## 🛠️ 安装指南
+使用扩展之前，需要配置 JetBrains IDE 的路径：
 
-### 方式一：通过扩展市场安装
+1. 打开 VSCode 设置（`Ctrl+,` 或 `Cmd+,`）
+2. 搜索 "Switch2Idea"
+3. 配置以下路径：
+   - `switch2idea.webStormPath`：WebStorm 可执行文件路径
+   - `switch2idea.androidStudioPath`：Android Studio 可执行文件路径
 
-1. 点击 [这里](https://marketplace.visualstudio.com/items?itemName=qczone.switch2idea) 安装
-2. 在 Cursor 扩展市场中搜索 "Switch2IDEA" 并安装
+### 默认路径
 
-### 方式二：本地安装
+- **WebStorm**：
+  - Windows：`C:\Program Files\JetBrains\WebStorm\bin\webstorm64.exe`
+  - macOS：`/Applications/WebStorm.app/Contents/MacOS/webstorm`
+  - Linux：`/usr/local/bin/webstorm`
 
-1. 下载最新版扩展包
-2. 在 Cursor 中，选择 `Extensions` → `...` → `Install from VSIX`
-3. 选择下载的扩展包完成安装
+- **Android Studio**：
+  - Windows：`C:\Program Files\Android\Android Studio\bin\studio64.exe`
+  - macOS：`/Applications/Android Studio.app/Contents/MacOS/studio`
+  - Linux：`/usr/local/android-studio/bin/studio.sh`
 
-## 🚀 使用说明
+## 🚀 使用方法
 
-### 基础使用
+### 打开文件
 
-#### 打开项目
+1. 在 VSCode 中打开要切换的文件
+2. 使用以下方式之一打开文件到 JetBrains IDE：
+   - 快捷键：
+     - WebStorm：`Alt+Shift+O`
+     - Android Studio：`Alt+Shift+O O`
+   - 右键点击文件，选择"在 [IDE] 中打开文件"
+   - 使用命令面板（`Ctrl+Shift+P`），输入"在 [IDE] 中打开文件"
 
-- 快捷键：`Alt+Shift+P`
-- 右键菜单：在文件浏览器中右键 → `Open Project in IDEA`
+### 打开项目
 
-#### 打开当前文件
+1. 在 VSCode 中打开要切换的项目
+2. 使用以下方式之一打开项目到 JetBrains IDE：
+   - 快捷键：
+     - WebStorm：`Alt+Shift+P`
+     - Android Studio：`Alt+Shift+P P`
+   - 在资源管理器中右键点击项目，选择"在 [IDE] 中打开项目"
+   - 使用命令面板（`Ctrl+Shift+P`），输入"在 [IDE] 中打开项目"
 
-- 快捷键：`Alt+Shift+O`
-- 右键菜单：
-  - 在编辑器中右键 → `Open File in IDEA`
-  - 在文件浏览器中右键 → `Open File in IDEA`
+## ⌨️ 快捷键
 
-### 配置
+- **WebStorm**：
+  - 打开文件：`Alt+Shift+O`
+  - 打开项目：`Alt+Shift+P`
+- **Android Studio**：
+  - 打开文件：`Alt+Shift+O O`
+  - 打开项目：`Alt+Shift+P P`
 
-打开 Cursor 设置，点击 `General` → `Editor` → `open editor settings` → `Extensions` → `Switch2IDEA` → `Idea Path`
+## 🤝 贡献
 
-- macOS：自动遍历 IDEA 常用安装路径
-- Windows：默认 `C:\Program Files\JetBrains\IntelliJ IDEA\bin\idea64.exe`
-- Linux：默认 `idea`
+欢迎贡献！以下是参与方式：
 
-### 环境要求
+1. Fork 本仓库
+2. 创建特性分支（`git checkout -b feature/amazing-feature`）
+3. 提交更改（`git commit -m '添加新特性'`）
+4. 推送到分支（`git push origin feature/amazing-feature`）
+5. 提交 Pull Request
 
-- Cursor 1.93.1+
-- IntelliJ IDEA 或其他 JetBrains IDE
+## ❓ 常见问题
 
-## 🧑‍💻 开发者指南
+### Q: 使用快捷键或右键菜单后 IDE 没有打开
+A: 请检查：
+1. VSCode 设置中的 IDE 路径是否正确配置
+2. IDE 是否正确安装
+3. 是否有足够的权限运行 IDE
 
-欢迎提交 Issue 和 Pull Request 来改进这个扩展。
+### Q: 可以为不同项目使用不同的 IDE 吗？
+A: 可以！你可以为每个工作区配置不同的 IDE 路径：
+1. 打开 VSCode 设置
+2. 切换到工作区标签页
+3. 为当前工作区配置 IDE 路径
 
-## 🙋 常见问题
-
-### 1. 快捷键/点击右键菜单后没有跳转到 IDEA?
-
-请按以下步骤检查：
-
-1. 打开 Cursor 设置，点击 `General` → `Editor` → `open editor settings` → `Extensions` → `Switch2IDEA`
-2. 确认 Idea Path 是否正确配置成 IDEA 的可执行文件路径
-
-### 2. 是否支持跳转到其他 IDE？
-
-支持，您可以配置 Idea Path 为其他 JetBrains IDE 的可执行文件路径
-
-### 3. 如何定义不同项目跳转不同 IDE？
-
-您可以为每个工作区（workspace）单独配置 IDE 路径：
-
-1. 打开 Cursor 设置，点击 `General` → `Editor` → `open editor settings`
-2. 选择 `Workspace` 标签页
-3. 导航到 `Extensions` → `Switch2IDEA` → `ideaPath`
-4. 输入该项目需要使用的 IDE 路径
-
-示例配置：
-
-- 前端项目：配置 WebStorm 路径
-- Spring Boot 项目：配置 IDEA 路径
-- Python 项目：配置 PyCharm 路径
+### Q: 支持其他 JetBrains IDE 吗？
+A: 目前扩展官方支持 IntelliJ IDEA、WebStorm 和 Android Studio。其他 JetBrains IDE 的支持可能会在未来的版本中添加。
 
 ## 📄 许可证
 
-本项目采用 [MIT License](LICENSE) 开源协议
+本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
 
-## 📮 问题反馈
+## 📮 反馈
 
-如果遇到问题或有建议，请通过以下方式反馈：
+如果遇到问题或有建议，请：
+- [提交 Issue](https://github.com/baoxin/switch2idea/issues)
+- [提交 Pull Request](https://github.com/baoxin/switch2idea/pulls)
 
-- [提交 GitHub Issue](https://github.com/qczone/switch2idea/issues)
-
-## 🌟 Star 历史
-
-[![Star History Chart](https://api.star-history.com/svg?repos=qczone/switch2idea&type=Date)](https://star-history.com/#qczone/switch2idea&Date)
+[English Documentation](readme.md)

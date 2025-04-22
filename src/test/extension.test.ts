@@ -4,27 +4,22 @@ import * as os from 'os';
 import * as path from 'path';
 import * as fs from 'fs';
 
-suite('Switch2IDEA Extension Test Suite', () => {
-	// 在所有测试开始前激活扩展
-	suiteSetup(async () => {
-		// 等待扩展激活
-		const extension = vscode.extensions.getExtension('qczone.switch2idea');
-		if (extension) {
-			if (!extension.isActive) {
-				await extension.activate();
-			}
-		}
+suite('Extension Test Suite', () => {
+	vscode.window.showInformationMessage('Start all tests.');
+
+	test('Extension should be present', () => {
+		assert.ok(vscode.extensions.getExtension('qczone.switch2idea'));
 	});
 
-	test('Extension should be present', async () => {
-		// 获取扩展并等待激活
-		const extension = vscode.extensions.getExtension('qczone.switch2idea');
-		assert.ok(extension, 'Extension should be installed');
-		
-		if (!extension.isActive) {
-			await extension.activate();
-		}
-		assert.ok(extension.isActive, 'Extension should be activated');
+	test('Commands should be registered', async () => {
+		const commands = await vscode.commands.getCommands();
+		assert.ok(commands.includes('Switch2IDEA.openFileInIDEA'));
+		assert.ok(commands.includes('Switch2IDEA.openProjectInIDEA'));
+	});
+
+	test('Configuration should be available', () => {
+		const config = vscode.workspace.getConfiguration('switch2idea');
+		assert.ok(config.has('ideaPath'));
 	});
 
 	test('Should register open in IDEA command', () => {

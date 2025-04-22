@@ -3,19 +3,11 @@ import { exec } from 'child_process';
 import * as os from 'os';
 import * as fs from 'fs';
 
-function getMacIdeaPath(): string {
+function getMacWebStormPath(): string {
 	const commonPaths = [
-		'/Applications/IDEA.app',
-		'/Applications/IntelliJ IDEA.app',
-		'/Applications/IntelliJ IDEA CE.app',
-		'/Applications/IntelliJ IDEA Ultimate.app',
-		'/Applications/IntelliJ IDEA Community Edition.app', 
-		`${os.homedir()}/Applications/IDEA.app`,
-		`${os.homedir()}/Applications/IntelliJ IDEA.app`,
-		`${os.homedir()}/Applications/IntelliJ IDEA CE.app`,
-		`${os.homedir()}/Applications/IntelliJ IDEA Ultimate.app`,
-		`${os.homedir()}/Applications/IntelliJ IDEA Community Edition.app`,
-	];
+    '/Applications/WebStorm.app',
+    `${os.homedir()}/Applications/WebStorm.app`,
+  ];
 
 	// Iterate through all possible IDEA installation paths and return the first existing path
 	for (const path of commonPaths) {
@@ -24,7 +16,39 @@ function getMacIdeaPath(): string {
 		}
 	}
 	// If no paths exist, return the default APP name
-	return 'IntelliJ IDEA';
+	return 'WebStorm';
+}
+
+function getMacAndroidStudioPath(): string {
+  const commonPaths = [
+    '/Applications/Android Studio.app',
+    `${os.homedir()}/Applications/Android Studio.app`,
+  ];
+
+  // Iterate through all possible IDEA installation paths and return the first existing path
+  for (const path of commonPaths) {
+    if (fs.existsSync(path)) {
+      return path;
+    }
+  }
+  // If no paths exist, return the default APP name
+  return 'Android Studio';
+}
+
+function getMacXcodePath(): string {
+  const commonPaths = [
+    '/Applications/Xcode.app',
+    `${os.homedir()}/Applications/Xcode.app`,
+  ];
+
+  // Iterate through all possible Xcode installation paths and return the first existing path
+  for (const path of commonPaths) {
+    if (fs.existsSync(path)) {
+      return path;
+    }
+  }
+  // If no paths exist, return the default APP name
+  return 'Xcode';
 }
 
 function executeCommand(command: string): Promise<void> {
@@ -57,11 +81,8 @@ function executeCommand(command: string): Promise<void> {
 	});
 }
 
-export function activate(context: vscode.ExtensionContext) {
-
-	console.log('Switch2IDEA is now active!');
-
-	let openFileDisposable = vscode.commands.registerCommand('Switch2IDEA.openFileInIDEA', async (uri?: vscode.Uri) => {
+async function openInIDE(uri: vscode.Uri | undefined, isProject: boolean, ideType: 'webstorm' | 'androidstudio' | 'xcode'): Promise<void> {
+	try {
 		let filePath: string;
 		let line = 1;
 		let column = 1;
@@ -76,7 +97,7 @@ export function activate(context: vscode.ExtensionContext) {
 		} else {
 			const editor = vscode.window.activeTextEditor;
 			if (!editor) {
-				vscode.window.showErrorMessage('No active editor!');
+				vscode.window.showErrorMessage('没有活动的编辑器！');
 				return;
 			}
 			filePath = editor.document.uri.fsPath;
@@ -85,81 +106,130 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 
 		const config = vscode.workspace.getConfiguration('switch2idea');
-		let ideaPath = config.get<string>('ideaPath');
+		let idePath: string;
 
-		if (!ideaPath) {
-			if (os.platform() === 'darwin') {
-				ideaPath = getMacIdeaPath();
-			} else if (os.platform() === 'win32') {
-				ideaPath = 'C:\\Program Files\\JetBrains\\IntelliJ IDEA\\bin\\idea64.exe';
-			} else {
-				ideaPath = 'idea';
+		if (ideType === 'webstorm') {
+			idePath = config.get<string>('webStormPath') || '';
+			if (!idePath) {
+				if (os.platform() === 'darwin') {
+					idePath = getMacWebStormPath();
+				} else if (os.platform() === 'win32') {
+					idePath = 'C:\\Program Files\\JetBrains\\WebStorm\\bin\\webstorm64.exe';
+				} else {
+					idePath = 'webstorm';
+				}
+			}
+		} else if (ideType === 'androidstudio') {
+			idePath = config.get<string>('androidStudioPath') || '';
+			if (!idePath) {
+				if (os.platform() === 'darwin') {
+					idePath = getMacAndroidStudioPath();
+				} else if (os.platform() === 'win32') {
+					idePath = 'C:\\Program Files\\Android\\Android Studio\\bin\\studio64.exe';
+				} else {
+					idePath = 'android-studio';
+				}
+			}
+		} else {
+			// Xcode
+			idePath = config.get<string>('xcodePath') || '';
+			if (!idePath) {
+				if (os.platform() === 'darwin') {
+					idePath = getMacXcodePath();
+				} else {
+					vscode.window.showErrorMessage('Xcode 仅在 macOS 上可用');
+					return;
+				}
 			}
 		}
 
 		let command: string;
 		if (os.platform() === 'darwin') {
-			const ideaUrl = `idea://open?file=${encodeURIComponent(filePath)}&line=${line}&column=${column}`;
-			// If IDEA is already open, using the 'idea' command will show two IDEA icons in the dock temporarily
-			// Using the 'open' command instead will prevent this issue
-			command = `open -a "${ideaPath}" "${ideaUrl}"`;
+			if (ideType === 'xcode') {
+				// 使用 xed 命令打开文件并跳转到指定行
+				command = `xed --line ${line} "${filePath}"`;
+			} else {
+				const ideUrl = `idea://open?file=${encodeURIComponent(filePath)}&line=${line}&column=${column}`;
+				command = `open -a "${idePath}" "${ideUrl}"`;
+			}
 		} else {
-			command = `"${ideaPath}" --line ${line} --column ${column} "${filePath}"`;
+			if (ideType === 'xcode') {
+				vscode.window.showErrorMessage('Xcode 仅在 macOS 上可用');
+				return;
+			}
+			command = `"${idePath}" --line ${line} --column ${column} "${filePath}"`;
 		}
 
 		console.log('Executing command:', command);
 
 		try {
 			await executeCommand(command);
+			const ideName = ideType === 'webstorm' ? 'WebStorm' : (ideType === 'androidstudio' ? 'Android Studio' : 'Xcode');
+			vscode.window.showInformationMessage(`成功在 ${ideName} 中打开${isProject ? '项目' : '文件'}: ${filePath}`);
 		} catch (error) {
 			const err = error as Error;
-			vscode.window.showErrorMessage(`Failed to open IDEA: ${err.message}`);
+			const ideName = ideType === 'webstorm' ? 'WebStorm' : (ideType === 'androidstudio' ? 'Android Studio' : 'Xcode');
+			vscode.window.showErrorMessage(`打开 ${ideName} 失败: ${err.message}`);
 		}
+	} catch (error) {
+		const err = error as Error;
+		vscode.window.showErrorMessage(`发生错误: ${err.message}`);
+	}
+}
+
+export function activate(context: vscode.ExtensionContext) {
+	console.log('Switch2IDEA is now active!');
+
+	// WebStorm commands
+	let openFileInWebStormDisposable = vscode.commands.registerCommand('Switch2IDEA.openFileInWebStorm', async (uri?: vscode.Uri) => {
+		await openInIDE(uri, false, 'webstorm');
 	});
 
-	let openProjectDisposable = vscode.commands.registerCommand('Switch2IDEA.openProjectInIDEA', async () => {
+	let openProjectInWebStormDisposable = vscode.commands.registerCommand('Switch2IDEA.openProjectInWebStorm', async () => {
 		const workspaceFolders = vscode.workspace.workspaceFolders;
 		if (!workspaceFolders || workspaceFolders.length === 0) {
-			vscode.window.showErrorMessage('No workspace folder is opened!');
+			vscode.window.showErrorMessage('没有打开的工作区文件夹！');
 			return;
 		}
-
-		const projectPath = workspaceFolders[0].uri.fsPath;
-
-		const config = vscode.workspace.getConfiguration('switch2idea');
-		let ideaPath = config.get<string>('ideaPath');
-
-		if (!ideaPath) {
-			if (os.platform() === 'darwin') {
-				const macIdeaPath = getMacIdeaPath();
-				ideaPath = macIdeaPath || 'IntelliJ IDEA';
-			} else if (os.platform() === 'win32') {
-				ideaPath = 'C:\\Program Files\\JetBrains\\IntelliJ IDEA\\bin\\idea64.exe';
-			} else {
-				ideaPath = 'idea';
-			}
-		}
-
-		let command: string;
-		if (os.platform() === 'darwin') {
-			const ideaUrl = `idea://open?file=${encodeURIComponent(projectPath)}`;
-			command = `open -a "${ideaPath}" "${ideaUrl}"`;
-		} else {
-			command = `"${ideaPath}" "${projectPath}"`;
-		}
-
-		console.log('Executing command:', command);
-
-		try {
-			await executeCommand(command);
-		} catch (error) {
-			const err = error as Error;
-			vscode.window.showErrorMessage(`Failed to open project in IDEA: ${err.message}`);
-		}
+		await openInIDE(workspaceFolders[0].uri, true, 'webstorm');
 	});
 
-	context.subscriptions.push(openFileDisposable);
-	context.subscriptions.push(openProjectDisposable);
+	// Android Studio commands
+	let openFileInAndroidStudioDisposable = vscode.commands.registerCommand('Switch2IDEA.openFileInAndroidStudio', async (uri?: vscode.Uri) => {
+		await openInIDE(uri, false, 'androidstudio');
+	});
+
+	let openProjectInAndroidStudioDisposable = vscode.commands.registerCommand('Switch2IDEA.openProjectInAndroidStudio', async () => {
+		const workspaceFolders = vscode.workspace.workspaceFolders;
+		if (!workspaceFolders || workspaceFolders.length === 0) {
+			vscode.window.showErrorMessage('没有打开的工作区文件夹！');
+			return;
+		}
+		await openInIDE(workspaceFolders[0].uri, true, 'androidstudio');
+	});
+
+	// Xcode commands
+	let openFileInXcodeDisposable = vscode.commands.registerCommand('Switch2IDEA.openFileInXcode', async (uri?: vscode.Uri) => {
+		await openInIDE(uri, false, 'xcode');
+	});
+
+	let openProjectInXcodeDisposable = vscode.commands.registerCommand('Switch2IDEA.openProjectInXcode', async () => {
+		const workspaceFolders = vscode.workspace.workspaceFolders;
+		if (!workspaceFolders || workspaceFolders.length === 0) {
+			vscode.window.showErrorMessage('没有打开的工作区文件夹！');
+			return;
+		}
+		await openInIDE(workspaceFolders[0].uri, true, 'xcode');
+	});
+
+	context.subscriptions.push(
+		openFileInWebStormDisposable,
+		openProjectInWebStormDisposable,
+		openFileInAndroidStudioDisposable,
+		openProjectInAndroidStudioDisposable,
+		openFileInXcodeDisposable,
+		openProjectInXcodeDisposable
+	);
 }
 
 export function deactivate() {}

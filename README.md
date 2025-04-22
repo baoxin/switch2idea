@@ -1,121 +1,123 @@
-# Switch2IDEA
+# Switch2Idea
 
-[中文](README_zh.md)
-
-> 💡 Recommended to use with [Switch2Cursor](https://github.com/qczone/switch2cursor) in IDEA
-
-[![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/qczone.switch2idea?label=VS%20Marketplace&style=for-the-badge&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=qczone.switch2idea)
-[![Downloads](https://img.shields.io/visual-studio-marketplace/d/qczone.switch2idea?style=for-the-badge&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=qczone.switch2idea)
+[![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/baoxin.switch2idea?label=VS%20Marketplace&style=for-the-badge&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=baoxin.switch2idea)
+[![Downloads](https://img.shields.io/visual-studio-marketplace/d/baoxin.switch2idea?style=for-the-badge&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=baoxin.switch2idea)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
-## 🔍 Project Overview
+A VSCode extension that enables quick switching between VSCode and JetBrains IDEs (IntelliJ IDEA, WebStorm, Android Studio).
 
-A Cursor extension that enhances development efficiency by enabling smooth switching between Cursor and IDEA
+![Switch2Idea Demo](images/switch-show.gif)
 
-![Switch2IDEA Demo](images/switch-show.gif)
+## ✨ Features
 
-## 🌟 Features
+- 🚀 Quick switching between VSCode and JetBrains IDEs
+- 📂 Open current file in JetBrains IDE with the same position
+- 📁 Open current project in JetBrains IDE
+- 🛠️ Support for multiple JetBrains IDEs:
+  - IntelliJ IDEA
+  - WebStorm
+  - Android Studio
+- ⌨️ Keyboard shortcuts support
+- 📝 Context menu integration
+- 🌐 Cross-platform support (Windows, macOS, Linux)
 
-- 🚀 Seamless Editor Switching
-  - One-click switching between Cursor and IDEA
-  - Automatically positions to the same cursor location (line and column)
-  - Perfectly maintains editing context without interrupting workflow
-- ⌨️ Convenient Shortcut Support
-  - macOS:
-    - `Option+Shift+P` - Open project in IDEA
-    - `Option+Shift+O` - Open current file in IDEA
-  - Windows:
-    - `Alt+Shift+P` - Open project in IDEA
-    - `Alt+Shift+O` - Open current file in IDEA
-- 🔧 Multiple Access Methods
-  - Keyboard shortcuts
-  - Editor context menu
-  - File explorer context menu
+## 📦 Installation
 
-## 🛠️ Installation Guide
+1. Open VSCode
+2. Press `Ctrl+Shift+X` (Windows/Linux) or `Cmd+Shift+X` (macOS) to open the Extensions view
+3. Search for "Switch2Idea"
+4. Click Install
 
-### Method 1: Install from Extension Marketplace
+Alternatively, you can install from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=baoxin.switch2idea)
 
-1. Click [here](https://marketplace.visualstudio.com/items?itemName=qczone.switch2idea) to install
-2. Search for "Switch2IDEA" in the Cursor extension marketplace and install
+## ⚙️ Configuration
 
-### Method 2: Local Installation
+Before using the extension, you need to configure the paths to your JetBrains IDEs:
 
-1. Download the latest extension package
-2. In Cursor, select `Extensions` → `...` → `Install from VSIX`
-3. Select the downloaded extension package to complete installation
+1. Open VSCode Settings (`Ctrl+,` or `Cmd+,`)
+2. Search for "Switch2Idea"
+3. Configure the following paths:
+   - `switch2idea.webStormPath`: Path to WebStorm executable
+   - `switch2idea.androidStudioPath`: Path to Android Studio executable
 
-## 🚀 Usage Instructions
+### Default Paths
 
-### Basic Usage
+- **WebStorm**:
+  - Windows: `C:\Program Files\JetBrains\WebStorm\bin\webstorm64.exe`
+  - macOS: `/Applications/WebStorm.app/Contents/MacOS/webstorm`
+  - Linux: `/usr/local/bin/webstorm`
 
-#### Open Project
+- **Android Studio**:
+  - Windows: `C:\Program Files\Android\Android Studio\bin\studio64.exe`
+  - macOS: `/Applications/Android Studio.app/Contents/MacOS/studio`
+  - Linux: `/usr/local/android-studio/bin/studio.sh`
 
-- Shortcut: `Alt+Shift+P`
-- Context Menu: Right-click in file explorer → `Open Project in IDEA`
+## 🚀 Usage
 
-#### Open Current File
+### Opening Files
 
-- Shortcut: `Alt+Shift+O`
-- Context Menu:
-  - Right-click in editor → `Open File in IDEA`
-  - Right-click in file explorer → `Open File in IDEA`
+1. Open the file you want to switch in VSCode
+2. Use one of the following methods to open the file in a JetBrains IDE:
+   - Keyboard shortcuts:
+     - WebStorm: `Alt+Shift+O`
+     - Android Studio: `Alt+Shift+O O`
+   - Right-click the file and select "Open File in [IDE]"
+   - Use the Command Palette (`Ctrl+Shift+P`) and type "Open File in [IDE]"
 
-### Configuration
+### Opening Projects
 
-Open Cursor settings, click `General` → `Editor` → `open editor settings` → `Extensions` → `Switch2IDEA` → `Idea Path`
+1. Open the project you want to switch in VSCode
+2. Use one of the following methods to open the project in a JetBrains IDE:
+   - Keyboard shortcuts:
+     - WebStorm: `Alt+Shift+P`
+     - Android Studio: `Alt+Shift+P P`
+   - Right-click the project in the Explorer and select "Open Project in [IDE]"
+   - Use the Command Palette (`Ctrl+Shift+P`) and type "Open Project in [IDE]"
 
-- macOS: Automatically traverses common IDEA installation paths
-- Windows: Default `C:\Program Files\JetBrains\IntelliJ IDEA\bin\idea64.exe`
-- Linux: Default `idea`
+## ⌨️ Keyboard Shortcuts
 
-### Requirements
+- **WebStorm**:
+  - Open File: `Alt+Shift+O`
+  - Open Project: `Alt+Shift+P`
+- **Android Studio**:
+  - Open File: `Alt+Shift+O O`
+  - Open Project: `Alt+Shift+P P`
 
-- Cursor 1.93.1+
-- IntelliJ IDEA or other JetBrains IDEs
+## 🤝 Contributing
 
-## 🧑‍💻 Developer Guide
+We welcome contributions! Here's how you can help:
 
-Issues and Pull Requests are welcome to improve this extension.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## 🙋 FAQ
+## ❓ FAQ
 
-### 1. No jump to IDEA after using shortcut/right-click menu?
+### Q: The IDE doesn't open when I use the shortcut or context menu
+A: Please check:
+1. The IDE path is correctly configured in VSCode settings
+2. The IDE is properly installed
+3. You have sufficient permissions to run the IDE
 
-Please check the following steps:
+### Q: Can I use different IDEs for different projects?
+A: Yes! You can configure IDE paths per workspace:
+1. Open VSCode settings
+2. Switch to the Workspace tab
+3. Configure the IDE paths for your current workspace
 
-1. Open Cursor settings, click `General` → `Editor` → `open editor settings` → `Extensions` → `Switch2IDEA`
-2. Verify that Idea Path is correctly configured to IDEA's executable path
-
-### 2. Does it support jumping to other IDEs?
-
-Yes, you can configure Idea Path to the executable path of other JetBrains IDEs
-
-### 3. How to define different IDEs for different projects?
-
-You can configure IDE paths separately for each workspace:
-
-1. Open Cursor settings, click `General` → `Editor` → `open editor settings`
-2. Select the `Workspace` tab
-3. Navigate to `Extensions` → `Switch2IDEA` → `ideaPath`
-4. Enter the IDE path needed for that project
-
-Configuration examples:
-
-- Frontend project: Configure WebStorm path
-- Spring Boot project: Configure IDEA path
-- Python project: Configure PyCharm path
+### Q: Does it support other JetBrains IDEs?
+A: Currently, the extension officially supports IntelliJ IDEA, WebStorm, and Android Studio. Support for other JetBrains IDEs may be added in future versions.
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📮 Feedback
 
-If you encounter issues or have suggestions, please provide feedback through:
+If you encounter any issues or have suggestions, please:
+- [Open an Issue](https://github.com/baoxin/switch2idea/issues)
+- [Submit a Pull Request](https://github.com/baoxin/switch2idea/pulls)
 
-- [Submit GitHub Issue](https://github.com/qczone/switch2idea/issues) 
-
-## 🌟 Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=qczone/switch2idea&type=Date)](https://star-history.com/#qczone/switch2idea&Date)
+[中文文档](README_zh.md)

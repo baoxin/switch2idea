@@ -60,7 +60,8 @@ Before using the extension, you need to configure the paths to your JetBrains ID
 2. Use one of the following methods to open the file in a JetBrains IDE:
    - Keyboard shortcuts:
      - WebStorm: `Alt+Shift+O`
-     - Android Studio: `Alt+Shift+O O`
+     - Android Studio: `Alt+Shift+O Alt+Shift+O`
+     - Xcode: `Alt+Shift+O Alt+Shift+X`
    - Right-click the file and select "Open File in [IDE]"
    - Use the Command Palette (`Ctrl+Shift+P`) and type "Open File in [IDE]"
 
@@ -70,7 +71,8 @@ Before using the extension, you need to configure the paths to your JetBrains ID
 2. Use one of the following methods to open the project in a JetBrains IDE:
    - Keyboard shortcuts:
      - WebStorm: `Alt+Shift+P`
-     - Android Studio: `Alt+Shift+P P`
+     - Android Studio: `Alt+Shift+P Alt+Shift+P`
+     - Xcode: `Alt+Shift+P Alt+Shift+X`
    - Right-click the project in the Explorer and select "Open Project in [IDE]"
    - Use the Command Palette (`Ctrl+Shift+P`) and type "Open Project in [IDE]"
 
@@ -80,8 +82,11 @@ Before using the extension, you need to configure the paths to your JetBrains ID
   - Open File: `Alt+Shift+O`
   - Open Project: `Alt+Shift+P`
 - **Android Studio**:
-  - Open File: `Alt+Shift+O O`
-  - Open Project: `Alt+Shift+P P`
+  - Open File: `Alt+Shift+O Alt+Shift+O`
+  - Open Project: `Alt+Shift+P Alt+Shift+P`
+- **Xcode**:
+  - Open File: `Alt+Shift+O Alt+Shift+X`
+  - Open Project: `Alt+Shift+P Alt+Shift+X`
 
 ## 🤝 Contributing
 

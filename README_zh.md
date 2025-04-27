@@ -60,7 +60,8 @@
 2. 使用以下方式之一打开文件到 JetBrains IDE：
    - 快捷键：
      - WebStorm：`Alt+Shift+O`
-     - Android Studio：`Alt+Shift+O O`
+     - Android Studio：`Alt+Shift+O Alt+Shift+O`
+     - Xcode：`Alt+Shift+O Alt+Shift+X`
    - 右键点击文件，选择"在 [IDE] 中打开文件"
    - 使用命令面板（`Ctrl+Shift+P`），输入"在 [IDE] 中打开文件"
 
@@ -70,7 +71,8 @@
 2. 使用以下方式之一打开项目到 JetBrains IDE：
    - 快捷键：
      - WebStorm：`Alt+Shift+P`
-     - Android Studio：`Alt+Shift+P P`
+     - Android Studio：`Alt+Shift+P Alt+Shift+P`
+     - Xcode：`Alt+Shift+P Alt+Shift+X`
    - 在资源管理器中右键点击项目，选择"在 [IDE] 中打开项目"
    - 使用命令面板（`Ctrl+Shift+P`），输入"在 [IDE] 中打开项目"
 
@@ -80,8 +82,11 @@
   - 打开文件：`Alt+Shift+O`
   - 打开项目：`Alt+Shift+P`
 - **Android Studio**：
-  - 打开文件：`Alt+Shift+O O`
-  - 打开项目：`Alt+Shift+P P`
+  - 打开文件：`Alt+Shift+O Alt+Shift+O`
+  - 打开项目：`Alt+Shift+P Alt+Shift+P`
+- **Xcode**：
+  - 打开文件：`Alt+Shift+O Alt+Shift+X`
+  - 打开项目：`Alt+Shift+P Alt+Shift+X`
 
 ## 🤝 贡献
 

@@ -2,6 +2,17 @@
 
 本文档记录 "Switch2IDEA" 扩展的所有重要更新。
 
+## [1.0.5]
+
+### 功能改进
+
+- 修改 AndroidStudio 的快捷键：
+  - 打开文件：从 `alt+shift+o o` 改为 `alt+shift+o alt+shift+o`
+  - 打开项目：从 `alt+shift+p p` 改为 `alt+shift+p alt+shift+p`
+- 修改 Xcode 的快捷键：
+  - 打开文件：从 `alt+shift+o x` 改为 `alt+shift+o alt+shift+x`
+  - 打开项目：从 `alt+shift+p x` 改为 `alt+shift+p alt+shift+x`
+
 ## [1.0.0]
 
 ### 新增功能
@@ -28,3 +39,9 @@
 ### 代码优化
 
 - 增加对 EPIPE 错误的捕获
+
+## [1.0.4]
+
+### 功能改进
+
+- 增加对 Xcode 的支持

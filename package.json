@@ -2,7 +2,7 @@
   "name": "switch2webstorm-androidstudio",
   "displayName": "Switch2WebStrom&AndroidStudio",
   "description": "Quickly switch between VS Code and JetBrains IDEs (WebStorm, Android Studio)",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "publisher": "baoxin",
   "license": "MIT",
   "repository": {
@@ -69,25 +69,25 @@
       },
       {
         "command": "Switch2IDEA.openFileInAndroidStudio",
-        "key": "alt+shift+o o",
-        "mac": "alt+shift+o o",
+        "key": "alt+shift+o alt+shift+o",
+        "mac": "alt+shift+o alt+shift+o",
         "when": "editorTextFocus"
       },
       {
         "command": "Switch2IDEA.openProjectInAndroidStudio",
-        "key": "alt+shift+p p",
-        "mac": "alt+shift+p p"
+        "key": "alt+shift+p alt+shift+p",
+        "mac": "alt+shift+p alt+shift+p"
       },
       {
         "command": "Switch2IDEA.openFileInXcode",
-        "key": "alt+shift+o x",
-        "mac": "alt+shift+o x",
+        "key": "alt+shift+o alt+shift+x",
+        "mac": "alt+shift+o alt+shift+x",
         "when": "editorTextFocus"
       },
       {
         "command": "Switch2IDEA.openProjectInXcode",
-        "key": "alt+shift+p x",
-        "mac": "alt+shift+p x"
+        "key": "alt+shift+p alt+shift+x",
+        "mac": "alt+shift+p alt+shift+x"
       }
     ],
     "configuration": {

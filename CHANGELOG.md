@@ -2,6 +2,21 @@
 
 本文档记录 "Switch2IDEA" 扩展的所有重要更新。
 
+## [1.0.6]
+
+### 功能改进
+
+- 优化快捷键组合方式：
+  - WebStorm：
+    - 打开文件：从 `alt+shift+o` 改为 `alt+shift+o w`
+    - 打开项目：从 `alt+shift+p` 改为 `alt+shift+p w`
+  - Android Studio：
+    - 打开文件：从 `alt+shift+o alt+shift+o` 改为 `alt+shift+o a`
+    - 打开项目：从 `alt+shift+p alt+shift+p` 改为 `alt+shift+p a`
+  - Xcode：
+    - 打开文件：从 `alt+shift+o alt+shift+x` 改为 `alt+shift+o x`
+    - 打开项目：从 `alt+shift+p alt+shift+x` 改为 `alt+shift+p x`
+
 ## [1.0.5]
 
 ### 功能改进

@@ -2,7 +2,7 @@
   "name": "switch2webstorm-androidstudio",
   "displayName": "Switch2WebStrom&AndroidStudio",
   "description": "Quickly switch between VS Code and JetBrains IDEs (WebStorm, Android Studio)",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "publisher": "baoxin",
   "license": "MIT",
   "repository": {
@@ -58,36 +58,36 @@
     "keybindings": [
       {
         "command": "Switch2IDEA.openFileInWebStorm",
-        "key": "alt+shift+o",
-        "mac": "alt+shift+o",
+        "key": "alt+shift+o w",
+        "mac": "alt+shift+o w",
         "when": "editorTextFocus"
       },
       {
         "command": "Switch2IDEA.openProjectInWebStorm",
-        "key": "alt+shift+p",
-        "mac": "alt+shift+p"
+        "key": "alt+shift+p w",
+        "mac": "alt+shift+p w"
       },
       {
         "command": "Switch2IDEA.openFileInAndroidStudio",
-        "key": "alt+shift+o alt+shift+o",
-        "mac": "alt+shift+o alt+shift+o",
+        "key": "alt+shift+o a",
+        "mac": "alt+shift+o a",
         "when": "editorTextFocus"
       },
       {
         "command": "Switch2IDEA.openProjectInAndroidStudio",
-        "key": "alt+shift+p alt+shift+p",
-        "mac": "alt+shift+p alt+shift+p"
+        "key": "alt+shift+p a",
+        "mac": "alt+shift+p a"
       },
       {
         "command": "Switch2IDEA.openFileInXcode",
-        "key": "alt+shift+o alt+shift+x",
-        "mac": "alt+shift+o alt+shift+x",
+        "key": "alt+shift+o x",
+        "mac": "alt+shift+o x",
         "when": "editorTextFocus"
       },
       {
         "command": "Switch2IDEA.openProjectInXcode",
-        "key": "alt+shift+p alt+shift+x",
-        "mac": "alt+shift+p alt+shift+x"
+        "key": "alt+shift+p x",
+        "mac": "alt+shift+p x"
       }
     ],
     "configuration": {

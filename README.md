@@ -59,9 +59,9 @@ Before using the extension, you need to configure the paths to your JetBrains ID
 1. Open the file you want to switch in VSCode
 2. Use one of the following methods to open the file in a JetBrains IDE:
    - Keyboard shortcuts:
-     - WebStorm: `Alt+Shift+O`
-     - Android Studio: `Alt+Shift+O Alt+Shift+O`
-     - Xcode: `Alt+Shift+O Alt+Shift+X`
+     - WebStorm: `Alt+Shift+O w`
+     - Android Studio: `Alt+Shift+O a`
+     - Xcode: `Alt+Shift+O x`
    - Right-click the file and select "Open File in [IDE]"
    - Use the Command Palette (`Ctrl+Shift+P`) and type "Open File in [IDE]"
 
@@ -70,23 +70,23 @@ Before using the extension, you need to configure the paths to your JetBrains ID
 1. Open the project you want to switch in VSCode
 2. Use one of the following methods to open the project in a JetBrains IDE:
    - Keyboard shortcuts:
-     - WebStorm: `Alt+Shift+P`
-     - Android Studio: `Alt+Shift+P Alt+Shift+P`
-     - Xcode: `Alt+Shift+P Alt+Shift+X`
+     - WebStorm: `Alt+Shift+P w`
+     - Android Studio: `Alt+Shift+P a`
+     - Xcode: `Alt+Shift+P x`
    - Right-click the project in the Explorer and select "Open Project in [IDE]"
    - Use the Command Palette (`Ctrl+Shift+P`) and type "Open Project in [IDE]"
 
 ## ⌨️ Keyboard Shortcuts
 
 - **WebStorm**:
-  - Open File: `Alt+Shift+O`
-  - Open Project: `Alt+Shift+P`
+  - Open File: `Alt+Shift+O w`
+  - Open Project: `Alt+Shift+P w`
 - **Android Studio**:
-  - Open File: `Alt+Shift+O Alt+Shift+O`
-  - Open Project: `Alt+Shift+P Alt+Shift+P`
+  - Open File: `Alt+Shift+O a`
+  - Open Project: `Alt+Shift+P a`
 - **Xcode**:
-  - Open File: `Alt+Shift+O Alt+Shift+X`
-  - Open Project: `Alt+Shift+P Alt+Shift+X`
+  - Open File: `Alt+Shift+O x`
+  - Open Project: `Alt+Shift+P x`
 
 ## 🤝 Contributing
 

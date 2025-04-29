@@ -59,9 +59,9 @@
 1. 在 VSCode 中打开要切换的文件
 2. 使用以下方式之一打开文件到 JetBrains IDE：
    - 快捷键：
-     - WebStorm：`Alt+Shift+O`
-     - Android Studio：`Alt+Shift+O Alt+Shift+O`
-     - Xcode：`Alt+Shift+O Alt+Shift+X`
+     - WebStorm：`Alt+Shift+O w`
+     - Android Studio：`Alt+Shift+O a`
+     - Xcode：`Alt+Shift+O x`
    - 右键点击文件，选择"在 [IDE] 中打开文件"
    - 使用命令面板（`Ctrl+Shift+P`），输入"在 [IDE] 中打开文件"
 
@@ -70,23 +70,23 @@
 1. 在 VSCode 中打开要切换的项目
 2. 使用以下方式之一打开项目到 JetBrains IDE：
    - 快捷键：
-     - WebStorm：`Alt+Shift+P`
-     - Android Studio：`Alt+Shift+P Alt+Shift+P`
-     - Xcode：`Alt+Shift+P Alt+Shift+X`
+     - WebStorm：`Alt+Shift+P w`
+     - Android Studio：`Alt+Shift+P a`
+     - Xcode：`Alt+Shift+P x`
    - 在资源管理器中右键点击项目，选择"在 [IDE] 中打开项目"
    - 使用命令面板（`Ctrl+Shift+P`），输入"在 [IDE] 中打开项目"
 
 ## ⌨️ 快捷键
 
 - **WebStorm**：
-  - 打开文件：`Alt+Shift+O`
-  - 打开项目：`Alt+Shift+P`
+  - 打开文件：`Alt+Shift+O w`
+  - 打开项目：`Alt+Shift+P w`
 - **Android Studio**：
-  - 打开文件：`Alt+Shift+O Alt+Shift+O`
-  - 打开项目：`Alt+Shift+P Alt+Shift+P`
+  - 打开文件：`Alt+Shift+O a`
+  - 打开项目：`Alt+Shift+P a`
 - **Xcode**：
-  - 打开文件：`Alt+Shift+O Alt+Shift+X`
-  - 打开项目：`Alt+Shift+P Alt+Shift+X`
+  - 打开文件：`Alt+Shift+O x`
+  - 打开项目：`Alt+Shift+P x`
 
 ## 🤝 贡献
 

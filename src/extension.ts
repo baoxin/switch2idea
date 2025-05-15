@@ -3,22 +3,6 @@ import {exec} from 'child_process';
 import * as os from 'os';
 import * as fs from 'fs';
 
-function getMacWebStormPath(): string {
-    const commonPaths = [
-        '/Applications/WebStorm.app',
-        `${os.homedir()}/Applications/WebStorm.app`,
-    ];
-
-    // Iterate through all possible IDEA installation paths and return the first existing path
-    for (const path of commonPaths) {
-        if (fs.existsSync(path)) {
-            return path;
-        }
-    }
-    // If no paths exist, return the default APP name
-    return 'WebStorm';
-}
-
 function getMacAndroidStudioPath(): string {
     const commonPaths = [
         '/Applications/Android Studio.app',
@@ -107,7 +91,7 @@ async function promptInstallXcodeCLI(): Promise<void> {
     }
 }
 
-async function openInIDE(uri: vscode.Uri | undefined, isProject: boolean, ideType: 'webstorm' | 'androidstudio' | 'xcode'): Promise<void> {
+async function openInIDE(uri: vscode.Uri | undefined, isProject: boolean, ideType: 'androidstudio' | 'xcode'): Promise<void> {
     try {
         let filePath: string;
         let line = 1;
@@ -134,18 +118,7 @@ async function openInIDE(uri: vscode.Uri | undefined, isProject: boolean, ideTyp
         const config = vscode.workspace.getConfiguration('switch2idea');
         let idePath: string;
 
-        if (ideType === 'webstorm') {
-            idePath = config.get<string>('webStormPath') || '';
-            if (!idePath) {
-                if (os.platform() === 'darwin') {
-                    idePath = getMacWebStormPath();
-                } else if (os.platform() === 'win32') {
-                    idePath = 'C:\\Program Files\\JetBrains\\WebStorm\\bin\\webstorm64.exe';
-                } else {
-                    idePath = 'webstorm';
-                }
-            }
-        } else if (ideType === 'androidstudio') {
+        if (ideType === 'androidstudio') {
             idePath = config.get<string>('androidStudioPath') || '';
             if (!idePath) {
                 if (os.platform() === 'darwin') {
@@ -196,11 +169,11 @@ async function openInIDE(uri: vscode.Uri | undefined, isProject: boolean, ideTyp
 
         try {
             await executeCommand(command);
-            const ideName = ideType === 'webstorm' ? 'WebStorm' : (ideType === 'androidstudio' ? 'Android Studio' : 'Xcode');
+            const ideName = ideType === 'androidstudio' ? 'Android Studio' : 'Xcode';
             vscode.window.showInformationMessage(`成功在 ${ideName} 中打开${isProject ? '项目' : '文件'}: ${filePath}`);
         } catch (error) {
             const err = error as Error;
-            const ideName = ideType === 'webstorm' ? 'WebStorm' : (ideType === 'androidstudio' ? 'Android Studio' : 'Xcode');
+            const ideName = ideType === 'androidstudio' ? 'Android Studio' : 'Xcode';
             vscode.window.showErrorMessage(`打开 ${ideName} 失败: ${err.message}`);
         }
     } catch (error) {
@@ -210,21 +183,7 @@ async function openInIDE(uri: vscode.Uri | undefined, isProject: boolean, ideTyp
 }
 
 export function activate(context: vscode.ExtensionContext) {
-    console.log('Switch2IDEA is now active!');
-
-    // WebStorm commands
-    let openFileInWebStormDisposable = vscode.commands.registerCommand('Switch2IDEA.openFileInWebStorm', async (uri?: vscode.Uri) => {
-        await openInIDE(uri, false, 'webstorm');
-    });
-
-    let openProjectInWebStormDisposable = vscode.commands.registerCommand('Switch2IDEA.openProjectInWebStorm', async () => {
-        const workspaceFolders = vscode.workspace.workspaceFolders;
-        if (!workspaceFolders || workspaceFolders.length === 0) {
-            vscode.window.showErrorMessage('没有打开的工作区文件夹！');
-            return;
-        }
-        await openInIDE(workspaceFolders[0].uri, true, 'webstorm');
-    });
+    console.log('Switch2AndroidStudio&Xcode is now active!');
 
     // Android Studio commands
     let openFileInAndroidStudioDisposable = vscode.commands.registerCommand('Switch2IDEA.openFileInAndroidStudio', async (uri?: vscode.Uri) => {
@@ -255,8 +214,6 @@ export function activate(context: vscode.ExtensionContext) {
     });
 
     context.subscriptions.push(
-        openFileInWebStormDisposable,
-        openProjectInWebStormDisposable,
         openFileInAndroidStudioDisposable,
         openProjectInAndroidStudioDisposable,
         openFileInXcodeDisposable,

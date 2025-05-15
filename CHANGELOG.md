@@ -1,15 +1,21 @@
 # 更新日志
 
-本文档记录 "Switch2IDEA" 扩展的所有重要更新。
+本文档记录 "Switch2AndroidStudio&Xcode" 扩展的所有重要更新。
+
+## [1.1.0]
+
+### 重大变更
+
+- 从扩展中移除了 WebStorm 支持
+- 重命名扩展为 "Switch2AndroidStudio&Xcode"
+- 更新所有文档，反映插件已不再支持 WebStorm
+- 更新关键词添加 Cursor 支持
 
 ## [1.0.6]
 
 ### 功能改进
 
 - 优化快捷键组合方式：
-  - WebStorm：
-    - 打开文件：从 `alt+shift+o` 改为 `alt+shift+o w`
-    - 打开项目：从 `alt+shift+p` 改为 `alt+shift+p w`
   - Android Studio：
     - 打开文件：从 `alt+shift+o alt+shift+o` 改为 `alt+shift+o a`
     - 打开项目：从 `alt+shift+p alt+shift+p` 改为 `alt+shift+p a`

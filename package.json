@@ -1,8 +1,8 @@
 {
-  "name": "switch2webstorm-androidstudio",
-  "displayName": "Switch2WebStrom&AndroidStudio",
-  "description": "Quickly switch between VS Code and JetBrains IDEs (WebStorm, Android Studio)",
-  "version": "1.0.6",
+  "name": "switch2androidstudio-xcode",
+  "displayName": "Switch2AndroidStudio&Xcode",
+  "description": "Quickly switch between VS Code and JetBrains IDEs (Android Studio, Xcode)",
+  "version": "1.1.0",
   "publisher": "baoxin",
   "license": "MIT",
   "repository": {
@@ -18,9 +18,10 @@
     "Programming Languages"
   ],
   "keywords": [
-    "intellij",
-    "idea",
-    "jetbrains",
+    "Android Studio",
+    "Xcode",
+    "JetBrains",
+    "Cursor",
     "switch",
     "open"
   ],
@@ -31,20 +32,12 @@
   "contributes": {
     "commands": [
       {
-        "command": "Switch2IDEA.openFileInWebStorm",
-        "title": "Open File in WebStorm"
-      },
-      {
         "command": "Switch2IDEA.openFileInAndroidStudio",
         "title": "Open File in Android Studio"
       },
       {
         "command": "Switch2IDEA.openFileInXcode",
         "title": "Open File in Xcode"
-      },
-      {
-        "command": "Switch2IDEA.openProjectInWebStorm",
-        "title": "Open Project in WebStorm"
       },
       {
         "command": "Switch2IDEA.openProjectInAndroidStudio",
@@ -56,17 +49,6 @@
       }
     ],
     "keybindings": [
-      {
-        "command": "Switch2IDEA.openFileInWebStorm",
-        "key": "alt+shift+o w",
-        "mac": "alt+shift+o w",
-        "when": "editorTextFocus"
-      },
-      {
-        "command": "Switch2IDEA.openProjectInWebStorm",
-        "key": "alt+shift+p w",
-        "mac": "alt+shift+p w"
-      },
       {
         "command": "Switch2IDEA.openFileInAndroidStudio",
         "key": "alt+shift+o a",
@@ -91,13 +73,8 @@
       }
     ],
     "configuration": {
-      "title": "Switch2IDEA-BX（for WebStorm, Android Studio and Xcode）",
+      "title": "Switch2AndroidStudio&Xcode",
       "properties": {
-        "switch2idea.webStormPath": {
-          "type": "string",
-          "default": "",
-          "description": "WebStorm executable path"
-        },
         "switch2idea.androidStudioPath": {
           "type": "string",
           "default": "",
@@ -113,14 +90,6 @@
     "menus": {
       "editor/context": [
         {
-          "command": "Switch2IDEA.openFileInIDEA",
-          "group": "navigation"
-        },
-        {
-          "command": "Switch2IDEA.openFileInWebStorm",
-          "group": "navigation"
-        },
-        {
           "command": "Switch2IDEA.openFileInAndroidStudio",
           "group": "navigation"
         },
@@ -130,22 +99,6 @@
         }
       ],
       "explorer/context": [
-        {
-          "command": "Switch2IDEA.openFileInIDEA",
-          "group": "navigation"
-        },
-        {
-          "command": "Switch2IDEA.openProjectInIDEA",
-          "group": "navigation"
-        },
-        {
-          "command": "Switch2IDEA.openFileInWebStorm",
-          "group": "navigation"
-        },
-        {
-          "command": "Switch2IDEA.openProjectInWebStorm",
-          "group": "navigation"
-        },
         {
           "command": "Switch2IDEA.openFileInAndroidStudio",
           "group": "navigation"

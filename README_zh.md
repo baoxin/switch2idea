@@ -1,22 +1,21 @@
-# Switch2Idea
+# Switch2AndroidStudio&Xcode
 
 [![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/baoxin.switch2idea?label=VS%20Marketplace&style=for-the-badge&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=baoxin.switch2idea)
 [![Downloads](https://img.shields.io/visual-studio-marketplace/d/baoxin.switch2idea?style=for-the-badge&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=baoxin.switch2idea)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
-一个快速在 VSCode 和 JetBrains IDE（IntelliJ IDEA、WebStorm、Android Studio）之间切换的 VSCode 插件。
+一个快速在 VSCode 和 Android Studio 或 Xcode 之间切换的 VSCode 插件。请注意，从 1.1.0 版本开始，已移除对 WebStorm 的支持。
 
 ![Switch2Idea 演示](images/switch-show.gif)
 
 ## ✨ 功能特点
 
-- 🚀 快速在 VSCode 和 JetBrains IDE 之间切换
-- 📂 支持打开当前文件到 JetBrains IDE 的相同位置
-- 📁 支持打开当前项目到 JetBrains IDE
-- 🛠️ 支持多个 JetBrains IDE：
-  - IntelliJ IDEA
-  - WebStorm
+- 🚀 快速在 VSCode 和 Android Studio 或 Xcode 之间切换
+- 📂 支持打开当前文件到 Android Studio 或 Xcode 的相同位置
+- 📁 支持打开当前项目到 Android Studio 或 Xcode
+- 🛠️ 支持：
   - Android Studio
+  - Xcode
 - ⌨️ 支持快捷键操作
 - 📝 支持右键菜单操作
 - 🌐 支持跨平台（Windows、macOS、Linux）
@@ -25,41 +24,38 @@
 
 1. 打开 VSCode
 2. 按下 `Ctrl+Shift+X`（Windows/Linux）或 `Cmd+Shift+X`（macOS）打开扩展视图
-3. 搜索 "Switch2Idea"
+3. 搜索 "Switch2AndroidStudio"
 4. 点击安装
 
 或者从 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=baoxin.switch2idea) 安装
 
 ## ⚙️ 配置
 
-使用扩展之前，需要配置 JetBrains IDE 的路径：
+使用扩展之前，需要配置 Android Studio 和 Xcode 的路径：
 
 1. 打开 VSCode 设置（`Ctrl+,` 或 `Cmd+,`）
-2. 搜索 "Switch2Idea"
+2. 搜索 "Switch2AndroidStudio"
 3. 配置以下路径：
-   - `switch2idea.webStormPath`：WebStorm 可执行文件路径
    - `switch2idea.androidStudioPath`：Android Studio 可执行文件路径
+   - `switch2idea.xcodePath`：Xcode 可执行文件路径
 
 ### 默认路径
-
-- **WebStorm**：
-  - Windows：`C:\Program Files\JetBrains\WebStorm\bin\webstorm64.exe`
-  - macOS：`/Applications/WebStorm.app/Contents/MacOS/webstorm`
-  - Linux：`/usr/local/bin/webstorm`
 
 - **Android Studio**：
   - Windows：`C:\Program Files\Android\Android Studio\bin\studio64.exe`
   - macOS：`/Applications/Android Studio.app/Contents/MacOS/studio`
   - Linux：`/usr/local/android-studio/bin/studio.sh`
 
+- **Xcode**：
+  - macOS：`/Applications/Xcode.app/Contents/MacOS/Xcode`
+
 ## 🚀 使用方法
 
 ### 打开文件
 
 1. 在 VSCode 中打开要切换的文件
-2. 使用以下方式之一打开文件到 JetBrains IDE：
+2. 使用以下方式之一打开文件到 Android Studio 或 Xcode：
    - 快捷键：
-     - WebStorm：`Alt+Shift+O w`
      - Android Studio：`Alt+Shift+O a`
      - Xcode：`Alt+Shift+O x`
    - 右键点击文件，选择"在 [IDE] 中打开文件"
@@ -68,9 +64,8 @@
 ### 打开项目
 
 1. 在 VSCode 中打开要切换的项目
-2. 使用以下方式之一打开项目到 JetBrains IDE：
+2. 使用以下方式之一打开项目到 Android Studio 或 Xcode：
    - 快捷键：
-     - WebStorm：`Alt+Shift+P w`
      - Android Studio：`Alt+Shift+P a`
      - Xcode：`Alt+Shift+P x`
    - 在资源管理器中右键点击项目，选择"在 [IDE] 中打开项目"
@@ -78,9 +73,6 @@
 
 ## ⌨️ 快捷键
 
-- **WebStorm**：
-  - 打开文件：`Alt+Shift+O w`
-  - 打开项目：`Alt+Shift+P w`
 - **Android Studio**：
   - 打开文件：`Alt+Shift+O a`
   - 打开项目：`Alt+Shift+P a`
@@ -112,8 +104,8 @@ A: 可以！你可以为每个工作区配置不同的 IDE 路径：
 2. 切换到工作区标签页
 3. 为当前工作区配置 IDE 路径
 
-### Q: 支持其他 JetBrains IDE 吗？
-A: 目前扩展官方支持 IntelliJ IDEA、WebStorm 和 Android Studio。其他 JetBrains IDE 的支持可能会在未来的版本中添加。
+### Q: 支持 WebStorm 或其他 JetBrains IDE 吗？
+A: 从 1.1.0 版本开始，本扩展不再支持 WebStorm。目前只支持 Android Studio 和 Xcode。其他 IDE 的支持可能会在未来的版本中添加。
 
 ## 📄 许可证
 
